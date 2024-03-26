@@ -30,5 +30,7 @@ $ cd dotfiles
 then use GNU stow to create symlinks
 
 ```
-$ stow -d ~/dotfiles -t ~
+$ stow .
 ```
+
+No need to do that, I created a pre-commit hook for this repo
