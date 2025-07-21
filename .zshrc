@@ -102,3 +102,16 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ssh-work="ssh 'mciupa484@10.0.0.216'"
 alias ssh-studio="ssh 'mitchellciupak@10.0.0.165'" #MitchStudio.local
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+alias view="nvim -R"
+alias vimdiff="nvim -d"
+alias k=kubectl
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias kl="kubectl logs"
+
+function killdocker() {
+	ps ax|grep -i docker|egrep -iv 'grep|com.docker.vmnetd'|awk '{print $1}'|xargs kill
+}
