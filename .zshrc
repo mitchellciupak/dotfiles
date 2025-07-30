@@ -93,25 +93,79 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ssh-work="ssh 'mciupa484@10.0.0.216'"
-alias ssh-studio="ssh 'mitchellciupak@10.0.0.165'" #MitchStudio.local
+
+# Aliases: editor
+alias e="$EDITOR"
+alias E="sudo -e"
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
 alias view="nvim -R"
 alias vimdiff="nvim -d"
+
+# Aliases: ls
+alias l='eza -1A --group-directories-first --color=always --git-ignore'
+alias ls='l'
+alias la='l -l --time-style="+%Y-%m-%d %H:%M" --no-permissions --octal-permissions'
+alias tree='l --tree'
+
+# Aliases: git
+alias ga='git add'
+alias gap='ga --patch'
+alias gb='git branch'
+alias gba='gb --all'
+alias gc='git commit'
+alias gca='gc --amend --no-edit'
+alias gce='gc --amend'
+alias gco='git checkout'
+alias gcl='git clone --recursive'
+alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
+alias gds='gd --staged'
+alias gi='git init'
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n"'
+alias gm='git merge'
+alias gn='git checkout -b'  # new branch
+alias gp='git push'
+alias gr='git reset'
+alias gs='git status --short'
+alias gu='git pull'
+
+gcm() { git commit --message "$*" }
+
+# Aliases: ssh
+alias ssh-work="ssh 'mciupa484@10.0.0.216'"
+alias ssh-studio="ssh 'mitchellciupak@10.0.0.165'" #MitchStudio.local
+
+# Aliases: kube
 alias k=kubectl
 alias kg="kubectl get"
 alias kd="kubectl describe"
 alias kl="kubectl logs"
 
+# Aliases: docker
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dl='docker logs --tail=100'
+alias dc='docker compose'
 function killdocker() {
 	ps ax|grep -i docker|egrep -iv 'grep|com.docker.vmnetd'|awk '{print $1}'|xargs kill
 }
+
+# Aliases: tmux
+alias ta='tmux attach'
+alias tl='tmux list-sessions'
+alias tn='tmux new-session -s'
+
+# Aliases: rg
+alias rg="rg --hidden --smart-case --glob='!.git/' --no-search-zip --trim --colors=line:fg:black --colors=line:style:bold --colors=path:fg:magenta --colors=match:style:nobold"
+
+# Aliases: pass
+alias pa='pass'
+alias pac='pass -c'
+alias po='pass otp'
+alias poc='pass otp -c'
+alias pg='openssl rand -base64 33'
+
+# Aliases: systemd
+alias sd='sudo systemctl'
+alias sdu='systemctl --user'
+alias jd='journalctl --no-pager'
