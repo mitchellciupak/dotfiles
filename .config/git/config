@@ -1,0 +1,147 @@
+[user]
+    name = mitchellciupak
+    email = mjcre23@gmail.com
+
+[advice]  # disable advices
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
+
+[alias]
+    # Shortcuts for common Git commands
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    df = diff
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	fpush = push
+
+[blame]
+    coloring = highlightRecent
+    date = relative
+
+[commit]
+    template = ~/.config/git/template
+    verbose = true  # add more context to commit messages
+
+[core]
+    autocrlf = input  # keep newlines as in input
+    compression = 9  # trade cpu for network
+    fsync = none
+    whitespace = error  # threat incorrect whitespace as errors
+    preloadindex = true  # preload index for faster status
+    editor = vim
+    mergeTool = vimdiff
+
+[credential]
+    # Enable credential caching for 1 hour (3600 seconds)
+    helper = cache --timeout=3600
+
+[diff]
+    context = 3  # less context in diffs
+    renames = copies  # detect copies as renames in diffs
+    interHunkContext = 10  # merge near hunks in diffs
+    algorithm = patience # Use patience algorithm for better diff readability
+
+[init]
+    defaultBranch = main
+
+[log]
+    abbrevCommit = true  # short commits
+    graphColors = blue,yellow,cyan,magenta,green,red
+
+[merge]
+    patience = true # Use patience algorithm for merges
+
+[status]
+    branch = true
+    short = true
+    showStash = true
+    showUntrackedFiles = all  # show individual untracked files
+
+[pager]
+    branch = false  # no need to use pager for git branch
+    tag = false
+    diff = diff-so-fancy | $PAGER  # diff-so-fancy as diff pager
+
+[push]
+    autoSetupRemote = true  # easier to push new branches
+    default = current  # push only current branch by default
+    followTags = true  # push also tags
+    gpgSign = false  # my remotes doesn't support sign pushes
+
+[pull]
+    rebase = true
+    default = current
+    # preserve = merges
+
+[submodule]
+    fetchJobs = 16
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn  # warn if rebasing with missing commits
+
+[rerere]
+    # Enable reuse recorded resolution to avoid repeated conflict resolution
+    enabled = true
+	autoUpdate = true
+
+[pack]
+    threads = 0  # use all available threads
+    windowMemory = 1g  # use 1g of memory for pack window
+    packSizeLimit = 1g  # max size of a packfile
+
+# Integrity
+[transfer]
+    fsckObjects = true
+
+[receive]
+    fsckObjects = true
+
+[fetch]
+    fsckObjects = true
+    prune = true # Prune remote branches that no longer exist on the remote
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = -taggerdate
+
+# Colors
+[color]
+    # Enable colorization of output
+    ui = auto
+
+[color "blame"]
+    highlightRecent = black bold,1 year ago,white,1 month ago,default,7 days ago,blue
+
+[color "branch"]
+    current  = magenta
+    local    = default
+    remote   = yellow
+    upstream = green
+    plain    = blue
+
+[color "diff"]
+    meta       = black bold
+    frag       = magenta
+    context    = white
+    whitespace = yellow reverse
+    old        = red
+
+[color.decorate]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+
+[interactive]
+    diffFilter = diff-so-fancy --patch
+    singlekey = true
+
+# Third-party: diff-so-fancy
+[diff-so-fancy]
+    markEmptyLines = false
