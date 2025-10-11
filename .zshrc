@@ -104,7 +104,7 @@ alias view="nvim -R"
 alias vimdiff="nvim -d"
 
 # Aliases: ls
-alias l='eza -1A --group-directories-first --color=always --git-ignore'
+alias l='eza -1A --group-directories-first --color=always'
 alias ls='l'
 alias la='l -l --time-style="+%Y-%m-%d %H:%M" --no-permissions --octal-permissions'
 alias tree='l --tree'
@@ -130,7 +130,9 @@ alias gr='git reset'
 alias gs='git status --short'
 alias gu='git pull'
 
-gcm() { git commit --message "$*" }
+function gcm() {
+	git commit --message "$*"
+}
 
 # Aliases: ssh
 alias ssh-work="ssh 'mciupa484@10.0.0.216'"
