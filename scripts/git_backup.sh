@@ -1,16 +1,14 @@
 #!/bin/bash
+set -e
 
 # To install run `crontab -e` with an ssh `gh auth login`
 # 15 10 * * 3 ~/dotfiles/scripts/git_backup.sh >> ~/.git_backup/log 2>&1
-
-set -e
 
 BACKUP_DIR="$HOME/.git_backup"
 INPUT_CSV="$BACKUP_DIR/input.csv"
 ARCHIVE_DIR="$BACKUP_DIR/archives"
 TEMP_DIR="$BACKUP_DIR/temp"
 KEEP_LATEST=6
-
 
 # Init
 mkdir -p "$ARCHIVE_DIR"
@@ -35,8 +33,9 @@ done < "$INPUT_CSV"
 
 # Compress Backup
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M")
+DEVICE_ID=$(scutil --get ComputerName)
 ZIP_NAME="backup_$TIMESTAMP.zip"
-ZIP_PATH="$ARCHIVE_DIR/$ZIP_NAME"
+ZIP_PATH="$ARCHIVE_DIR/$DEVICE_ID/$ZIP_NAME"
 
 cd "$TEMP_DIR"
 zip -rq "$ZIP_PATH" .
