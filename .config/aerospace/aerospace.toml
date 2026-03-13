@@ -1,7 +1,7 @@
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = ['reload-config --no-gui', 'summon-workspace 1']
+# after-login-command = ['reload-config --no-gui', 'summon-workspace 1']
 
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
@@ -114,9 +114,8 @@ alt-shift-equal = 'resize smart +50'
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 alt-b = 'workspace Notes'
-alt-c = 'workspace Calendar'
+alt-c = 'workspace Comms'
 alt-t = 'workspace Terminal'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -125,7 +124,7 @@ alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-a = 'move-node-to-workspace A'
 alt-shift-b = 'move-node-to-workspace Notes'
-alt-shift-c = 'move-node-to-workspace Calendar'
+alt-shift-c = 'move-node-to-workspace Comms' 
 alt-shift-t = 'move-node-to-workspace Terminal'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth

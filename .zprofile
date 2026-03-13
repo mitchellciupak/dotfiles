@@ -1,13 +1,5 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Programs
-export EDITOR='nvim'
-export TERMINAL='footclient'
-export BROWSER='safari'
-export PAGER='less'
-
-export VISUAL="${EDITOR}"
-
 # Settings: fzf
 FZF_DEFAULT_OPTS_ARR=(
   --scheme=history
