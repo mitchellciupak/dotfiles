@@ -1,0 +1,16 @@
+# Font
+font-family = SFMono Nerd Font
+font-size = 14
+cursor-style = block
+
+# UI
+macos-titlebar-style = transparent
+window-colorspace = display-p3
+
+## Themes
+#theme = Builtin Light
+#theme = Belafonte Day
+theme = Builtin Pastel Dark
+
+# Usability
+copy-on-select = clipboard

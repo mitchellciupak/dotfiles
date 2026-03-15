@@ -158,3 +158,9 @@
     markEmptyLines = false
 [oh-my-zsh]
 	git-commit-alias = 25d4d753bfe235040ebaea068b21feca8570e156
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
