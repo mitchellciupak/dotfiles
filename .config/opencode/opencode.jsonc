@@ -5,8 +5,8 @@
     "port": 4096,
   },
   "mcp": {
-    "ai-dev-grafana": {
-      "enabled": false,
+    "grafana-ai-dev": {
+      "enabled": true,
       "type": "local",
       "command": ["uvx", "mcp-grafana"],
       "environment": {
@@ -15,12 +15,15 @@
       },
     },
   },
+  "tools": {
+    "grafana-*": false
+  },
   "agent": {
     "plan": {
         "disable": false
     },
     "build": {
         "disable": false
-    }
+    },
   },
 }
