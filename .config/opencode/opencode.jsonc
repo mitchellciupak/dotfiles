@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "tools": {
+    "websearch": true,
+    "codesearch": true
+  },
+  "server": {
+    "port": 4096,
+  },
+  "mcp": {
+    "ai-dev-grafana": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.ai-dev.titanxdr.comcast.com",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/.certs/ai_grafana_dev.token}",
+      },
+    },
+  },
+  "agent": {
+    "plan": {
+        "disable": false
+    },
+    "build": {
+        "disable": false
+    }
+  },
+}
