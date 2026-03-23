@@ -86,16 +86,11 @@ alias oc='opencode'
 whatcmd() {
   local task="$*"
   local result
-  result=$(oc run -m github-copilot/gpt-5-mini \
-    "You are a CLI command builder. Given a task description, output only the exact command to run it.
-
-Rules:
-1. output only one command to run. 
-2. output the best one
-3. prefer single-line commands; use && or pipes where appropriate
-4. flags should be explicit and readable (prefer --long-form over -x where practical)
-
-Task: ${task}")
+  if nc -z localhost 4096 2>/dev/null; then
+    result=$(opencode run --attach http://localhost:4096 --dir "$(pwd)" --agent command-builder "$task")
+  else
+    result=$(opencode run --agent command-builder "$task")
+  fi
   echo "$result"
   echo "$result" | pbcopy
 }
