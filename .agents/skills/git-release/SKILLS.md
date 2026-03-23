@@ -1,9 +1,6 @@
 ---
 name: git-release
 description: Create consistent releases and changelogs
-metadata:
-  audience: maintainers
-  workflow: github
 ---
 
 ## What I do
