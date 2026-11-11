@@ -58,16 +58,21 @@ alias gp='git push'
 ## SSH
 alias ssh-studio="ssh 'mitchellciupak@MitchStudio.local'"
 k9s-homelab() {
-    echo "⚡ Opening SSH tunnel to homelab..."
-    # Starts the tunnel in the background and saves its process ID (PID)
-    ssh -fN -L 50279:localhost:50279 mitchellciupak@mitchstudio.local
+    echo "⚡ Opening SSH tunnel to studio (colima-homelab)..."
+
+    # Start the tunnel in the background without -f, capturing its exact PID
+    # ExitOnForwardFailure makes ssh exit (instead of hanging) if the local port is taken
+    ssh -o ExitOnForwardFailure=yes -N -L 50176:localhost:50176 studio &
+    local ssh_pid=$!
+
+    # Guarantee cleanup on normal exit, error, or Ctrl+C interruption
+    trap 'echo "🔌 Closing SSH tunnel..."; kill $ssh_pid 2>/dev/null' EXIT
+
+    # Brief pause to ensure the tunnel establishes its port binding
+    sleep 1
 
     echo "🐳 Launching k9s..."
-    k9s --context kind-homelab:
-
-    # When you quit k9s, this automatically cleans up and closes the SSH tunnel
-    echo "🔌 Closing SSH tunnel..."
-    pkill -f "ssh -fN -L 6443:localhost:50279"
+    k9s --context colima-homelab
 }
 
 ## K8s
