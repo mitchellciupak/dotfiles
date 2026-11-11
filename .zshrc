@@ -6,12 +6,12 @@ export LANG=en_US.UTF-8
 
 # ZSH UI
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell" 
+ZSH_THEME="robbyrussell"
 HIST_STAMPS="yyyy-mm-dd"
 
 # ZSH Plugins
 # https://github.com/ohmyzsh/ohmyzsh/wiki/plugins
-plugins=(aws copyfile copypath dotenv git kubectl web-search)
+plugins=(copyfile copypath dotenv git kubectl web-search)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Keep below ZSH config
@@ -56,8 +56,19 @@ alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %a
 alias gp='git push'
 
 ## SSH
-alias ssh-work="ssh 'mciupa484@10.0.0.216'"
-alias ssh-studio="ssh 'mitchellciupak@10.0.0.165'"
+alias ssh-studio="ssh 'mitchellciupak@MitchStudio.local'"
+k9s-homelab() {
+    echo "⚡ Opening SSH tunnel to homelab..."
+    # Starts the tunnel in the background and saves its process ID (PID)
+    ssh -fN -L 50279:localhost:50279 mitchellciupak@mitchstudio.local
+
+    echo "🐳 Launching k9s..."
+    k9s --context kind-homelab:
+
+    # When you quit k9s, this automatically cleans up and closes the SSH tunnel
+    echo "🔌 Closing SSH tunnel..."
+    pkill -f "ssh -fN -L 6443:localhost:50279"
+}
 
 ## K8s
 alias k=kubectl
@@ -102,6 +113,6 @@ export PATH="/Users/mciupa484@cable.comcast.com/.rd/bin:$PATH"
 
 ## AWS
 export AWS_REGION=us-east-1
-export AWS_PROFILE=ApplicationOwner@476134988768
+# export AWS_PROFILE=ApplicationOwner@476134988768
 export AWS_DEFAULT_OUTPUT="json"
 export AWS_PAGER="less -FRSX"

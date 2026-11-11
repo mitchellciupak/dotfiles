@@ -8,10 +8,13 @@
     "grafana-ai-dev": {
       "enabled": true,
       "type": "local",
-      "command": ["uvx", "mcp-grafana"],
+      "command": [
+        "uvx",
+        "mcp-grafana"
+      ],
       "environment": {
         "GRAFANA_URL": "https://grafana.ai-dev.titanxdr.comcast.com",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/.certs/ai_grafana_dev.token}",
+        // "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/.certs/ai_grafana_dev.token}",
       },
     },
   },
@@ -20,10 +23,10 @@
   },
   "agent": {
     "plan": {
-        "disable": false
+      "disable": false
     },
     "build": {
-        "disable": false
+      "disable": false
     },
   },
 }
